@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" android:versionCode="1" android:versionName="1.05" package="com.valvesoftware.source.MOD_REPLACE_ME">
-    <uses-feature android:name="android.hardware.screen.landscape" android:required="true"/>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" android:versionCode="1" android:versionName="1.1" package="com.valvesoftware.source.clientmod">
     <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
     <uses-feature android:name="android.software.leanback" android:required="false" />
     <uses-feature android:glEsVersion="0x00020000"/>
