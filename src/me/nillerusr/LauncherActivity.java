@@ -1,6 +1,6 @@
 package me.nillerusr;
 
-import com.valvesoftware.source.MOD_REPLACE_ME.R;
+import com.valvesoftware.source.ClientMod.R;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -34,7 +34,7 @@ import android.content.ComponentName;
 import android.content.ClipboardManager;
 
 public class LauncherActivity extends Activity {
-	public static String MOD_NAME = "MOD_REPLACE_ME"; // Change mod name here!
+	public static String MOD_NAME = "ClientMod"; // Change mod name here!
 
 	public static String PKG_NAME;
 	public static boolean can_write = true;
@@ -186,7 +186,7 @@ public class LauncherActivity extends Activity {
 				i.putExtra("gamedir", "ep2" );
 		}
 		else
-			i.putExtra("gamedir", MOD_NAME );
+			i.putExtra("gamedir", cstrike );
 
 		i.putExtra("gamelibdir", getApplicationInfo().nativeLibraryDir);
 		i.putExtra("vpk", getFilesDir().getPath() +"/"+ ExtractAssets.VPK_NAME);
