@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" android:versionCode="1" android:versionName="1.1" package="com.valvesoftware.source.clientmod">
+    <uses-feature android:name="android.hardware.screen.landscape" android:required="true"/>
     <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
     <uses-feature android:name="android.software.leanback" android:required="false" />
     <uses-feature android:glEsVersion="0x00020000"/>
@@ -11,7 +12,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <service android:name="me.nillerusr.UpdateService" android:stopWithTask="false" />
         <meta-data android:name="android.max_aspect" android:value="9999.0" />
         <meta-data android:name="android.allow_multiple_resumed_activities" android:value="true" />
     </application>
