@@ -38,7 +38,7 @@ import me.nillerusr.UpdateSystem;
 
 public class LauncherActivity extends Activity
 {
-	public static String MOD_NAME = "gamedir";
+	public static String MOD_NAME = "cstrike";
 	public static String PKG_NAME;
 
 	static EditText cmdArgs;
