@@ -38,7 +38,7 @@ import me.nillerusr.UpdateSystem;
 
 public class LauncherActivity extends Activity
 {
-	public static String MOD_NAME = "clientmod";
+	public static String MOD_NAME = "cm";
 	public static String PKG_NAME;
 
 	static EditText cmdArgs;
