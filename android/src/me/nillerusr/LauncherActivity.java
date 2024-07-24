@@ -199,7 +199,7 @@ public class LauncherActivity extends Activity {
                     // LDPlayer
                     || Build.MANUFACTURER.equalsIgnoreCase("Tencent")
                     || Build.BRAND.equalsIgnoreCase("Tencent")
-                    || Build.DEVICE.equalsIgnoreCase("Tencent"));
+                    || Build.DEVICE.equalsIgnoreCase("Tencent");
 
         return result;
     }
