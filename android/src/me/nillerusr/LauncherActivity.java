@@ -175,9 +175,43 @@ public class LauncherActivity extends Activity
 
 		return i;
 	}
+  
+@Override
+    public Boolean isRunningOnEmulator() {
+        return (Build.MANUFACTURER.equals("Google") && Build.BRAND.equals("google") &&
+                ((Build.FINGERPRINT.startsWith("google/sdk_gphone_")
+                        && Build.FINGERPRINT.endsWith(":user/release-keys")
+                        && Build.PRODUCT.startsWith("sdk_gphone_")
+                        && Build.MODEL.startsWith("sdk_gphone_"))
+                        // alternative
+                        || (Build.FINGERPRINT.startsWith("google/sdk_gphone64_")
+                        && (Build.FINGERPRINT.endsWith(":userdebug/dev-keys") || Build.FINGERPRINT.endsWith(":user/release-keys"))
+                        && Build.PRODUCT.startsWith("sdk_gphone64_")
+                        && Build.MODEL.startsWith("sdk_gphone64_")))
+                //
+                || Build.FINGERPRINT.startsWith("generic")
+                || Build.FINGERPRINT.startsWith("unknown")
+                || Build.MODEL.contains("google_sdk")
+                || Build.MODEL.contains("Emulator")
+                || Build.MODEL.contains("Android SDK built for x86")
+                // bluestacks
+                || "QC_Reference_Phone".equals(Build.BOARD) && !"Xiaomi".equalsIgnoreCase(Build.MANUFACTURER)
+                // bluestacks
+                || Build.MANUFACTURER.contains("Genymotion")
+                || Build.HOST.startsWith("Build")
+                // MSI App Player
+                || (Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic"))
+                || "google_sdk".equals(Build.PRODUCT)
+                // another Android SDK emulator check
+                || SystemProperties.getProp("ro.kernel.qemu").equals("1"));
+    }
 
 	public void startSource( View view )
 	{
+   if (isRunningOnEmulator()) {
+            finish();
+            return;
+        }
 		String argv = cmdArgs.getText().toString();
 		SharedPreferences.Editor editor = mPref.edit();
 		editor.putString( "argv", argv );
