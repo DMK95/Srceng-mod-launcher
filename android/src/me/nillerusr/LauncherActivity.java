@@ -191,7 +191,15 @@ public class LauncherActivity extends Activity {
                         || (Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic"))
                         || "google_sdk".equals(Build.PRODUCT)
                         // another Android SDK emulator check
-                        || getSystemProperty("ro.kernel.qemu").equals("1"));
+                        || getSystemProperty("ro.kernel.qemu").equals("1"))
+
+                    || Build.MANUFACTURER.equalsIgnoreCase("nox")
+                    || Build.BRAND.equalsIgnoreCase("nox")
+                    || Build.DEVICE.equalsIgnoreCase("nox")
+                    // LDPlayer
+                    || Build.MANUFACTURER.equalsIgnoreCase("Tencent")
+                    || Build.BRAND.equalsIgnoreCase("Tencent")
+                    || Build.DEVICE.equalsIgnoreCase("Tencent"));
 
         return result;
     }
