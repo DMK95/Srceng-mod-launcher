@@ -164,68 +164,9 @@ public class LauncherActivity extends Activity {
         return i;
     }
 
-    public boolean isRunningOnEmulator() {
-    boolean result =
-            (Build.MANUFACTURER.equals("Google") && Build.BRAND.equals("google") &&
-                    ((Build.FINGERPRINT.startsWith("google/sdk_gphone_")
-                            && Build.FINGERPRINT.endsWith(":user/release-keys")
-                            && Build.PRODUCT.startsWith("sdk_gphone_")
-                            && Build.MODEL.startsWith("sdk_gphone_"))
-                            // alternative
-                            || (Build.FINGERPRINT.startsWith("google/sdk_gphone64_")
-                            && (Build.FINGERPRINT.endsWith(":userdebug/dev-keys") || Build.FINGERPRINT.endsWith(":user/release-keys"))
-                            && Build.PRODUCT.startsWith("sdk_gphone64_")
-                            && Build.MODEL.startsWith("sdk_gphone64_")))
-                    //
-                    || Build.FINGERPRINT.startsWith("generic")
-                    || Build.FINGERPRINT.startsWith("unknown")
-                    || Build.MODEL.contains("google_sdk")
-                    || Build.MODEL.contains("Emulator")
-                    || Build.MODEL.contains("Android SDK built for x86")
-                    // bluestacks
-                    || "QC_Reference_Phone".equals(Build.BOARD) && !"Xiaomi".equalsIgnoreCase(Build.MANUFACTURER)
-                    // bluestacks
-                    || Build.MANUFACTURER.contains("Genymotion")
-                    || Build.HOST.startsWith("Build")
-                    // MSI App Player
-                    || (Build.BRAND.startsWith("generic") && Build.DEVICE.startsWith("generic"))
-                    || "google_sdk".equals(Build.PRODUCT)
-                    // another Android SDK emulator check
-                    || getSystemProperty("ro.kernel.qemu").equals("1")
-                    // Nox Player
-                    || Build.MANUFACTURER.equalsIgnoreCase("nox")
-                    || Build.BRAND.equalsIgnoreCase("nox")
-                    || Build.DEVICE.equalsIgnoreCase("nox")
-                    // LDPlayer
-                    || Build.MANUFACTURER.equalsIgnoreCase("Tencent")
-                    || Build.BRAND.equalsIgnoreCase("Tencent")
-                    || Build.DEVICE.equalsIgnoreCase("Tencent")
-                    // Check abilist for x86 and x86_64
-                    || getSystemProperty("ro.product.cpu.abilist").contains("x86")
-                    || getSystemProperty("ro.product.cpu.abilist").contains("x86_64")
-                    // Check ro.product.name for ld, ld_aosp, x86, and x86_64
-                    || getSystemProperty("ro.product.name").contains("ld")
-                    || getSystemProperty("ro.product.name").contains("ld_aosp")
-                    || getSystemProperty("ro.product.name").contains("x86")
-                    || getSystemProperty("ro.product.name").contains("x86_64"));
-
-    return result;
-}
-
-    private static String getSystemProperty(String name) {
-        try {
-            Class<?> systemProperties = Class.forName("android.os.SystemProperties");
-            return (String) systemProperties.getMethod("get", String.class).invoke(null, name);
-        } catch (Exception e) {
-            return "";
-        }
-    }
+    
 
     public void startSource(View view) {
-        if (isRunningOnEmulator()) {
-            finish();
-            return;
-        }
 
         String argv = cmdArgs.getText().toString();
         SharedPreferences.Editor editor = mPref.edit();
